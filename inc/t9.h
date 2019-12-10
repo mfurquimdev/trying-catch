@@ -15,7 +15,7 @@ public:
 	char getMChar( void ) const;
 	int getMKey( void ) const;
 
-	friend std::ostream& operator << (std::ostream&, T9 const&);
+//	friend std::ostream& operator << (std::ostream&, T9 const&);
 
 private:
 	// Receives a string but stores only the first char

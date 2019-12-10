@@ -95,11 +95,11 @@ T9::getMKey( void ) const
 	return mKey;
 }
 
-std::ostream& operator<< (std::ostream& os, T9 const& t9)
-{
-	os << "[" << t9.getMChar() << "," << t9.getMKey() << "]";
-	return os;
-}
+//std::ostream& operator<< (std::ostream& os, T9 const& t9)
+//{
+//	os << "[" << t9.getMChar() << "," << t9.getMKey() << "]";
+//	return os;
+//}
 
 void
 T9::setMChar( std::string str )
