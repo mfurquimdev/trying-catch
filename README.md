@@ -5,6 +5,40 @@ Simple project to test the [CATCH](https://github.com/catchorg/Catch2) framework
 The project implements a keyboard T9 capable of dialing one char only, e.g. type `2` and get an `A`.
 The enconding is the opposite, the `A` is located at key `2`. So on and so forth.
 
+## Example output
+
+```
+$ ./bin/t9_test
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+t9_test is a Catch v2.11.0 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+Encode incorrect letter --> return -1
+-------------------------------------------------------------------------------
+test/t9_test.cpp:8
+...............................................................................
+
+test/t9_test.cpp:11:
+warning:
+  WARN: At the top of the TEST CASE
+
+test/t9_test.cpp:15:
+warning:
+  WARN: Inside a scope
+
+test/t9_test.cpp:25: FAILED:
+explicitly with messages:
+  INFO: At the top of the TEST CASE
+  INFO: Test on Encode("?")
+  t9 := [?,-1]
+  I will fail after '?'
+
+===============================================================================
+test cases: 1 | 1 failed
+assertions: 3 | 2 passed | 1 failed
+```
+
 ## Structure of the project
 
 - The `./bin` directory contains the binaries (executables)
@@ -26,6 +60,7 @@ The enconding is the opposite, the `A` is located at key `2`. So on and so forth
 
 
 ```
+mfurquim/trying-catch
 ├── bin/
 │   ├── t9_main
 │   └── t9_test
