@@ -2,7 +2,7 @@
 
 #include <boost/algorithm/string.hpp>
 
-int
+void
 T9::Encode( std::string str )
 {
 	setMChar( str );
@@ -74,7 +74,7 @@ T9::Encode( std::string str )
 			break;
 	}
 
-	return encoded;
+	mKey = encoded;
 }
 
 
@@ -83,9 +83,22 @@ T9::T9()
 	setMChar( "" );
 }
 
-T9::T9( std::string str )
+char
+T9::getMChar( void ) const
 {
-	setMChar( str );
+	return mChar;
+}
+
+int
+T9::getMKey( void ) const
+{
+	return mKey;
+}
+
+std::ostream& operator<< (std::ostream& os, T9 const& t9)
+{
+	os << "[" << t9.getMChar() << "," << t9.getMKey() << "]";
+	return os;
 }
 
 void
@@ -93,10 +106,4 @@ T9::setMChar( std::string str )
 {
 	// Get the first char only
 	mChar = boost::to_upper_copy<std::string>(str).c_str()[0];
-}
-
-char
-T9::getMChar( void )
-{
-	return mChar;
 }
