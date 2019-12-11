@@ -18,199 +18,90 @@ namespace Catch
 	}
 }
 
-TEST_CASE("Encode key 2 letters (A,B,C) --> return 2", "[Single Digit] [Key 2 Letters]")
+class T9Tests
 {
 	T9 t9;
 
-	t9.Encode("A");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  'A');
-	REQUIRE(t9.getMKey() ==  2);
+protected:
+	void EncodeAndCheck( const std::string& str, int expectedDigit )
+	{
+		auto result = t9.Encode(str);
 
-	t9.Encode("B");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  'B');
-	REQUIRE(t9.getMKey() ==  2);
+		CAPTURE(t9);
+		CHECK(result == expectedDigit);
+	}
+};
 
-	t9.Encode("C");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  'C');
-	REQUIRE(t9.getMKey() ==  2);
-}
-
-TEST_CASE("Encode key 3 letters (D,E,F) --> return 3", "[Single Digit] [Key 3 Letters]")
+TEST_CASE_METHOD(T9Tests, "Encode letters to keys")
 {
-	T9 t9;
+	SECTION("Encode letters on key 2", "[Single Digit] [Key 2 Letters]")
+	{
+		EncodeAndCheck("A", 2);
+		EncodeAndCheck("B", 2);
+		EncodeAndCheck("C", 2);
+	}
 
-	t9.Encode("D");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  'D');
-	REQUIRE(t9.getMKey() ==  3);
+	SECTION("Encode letters on key 3", "[Single Digit] [Key 3 Letters]")
+	{
+		EncodeAndCheck("D", 3);
+		EncodeAndCheck("E", 3);
+		EncodeAndCheck("F", 3);
+	}
 
-	t9.Encode("E");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  'E');
-	REQUIRE(t9.getMKey() ==  3);
+	SECTION("Encode letters on key 4", "[Single Digit] [Key 4 Letters]")
+	{
+		EncodeAndCheck("G", 4);
+		EncodeAndCheck("H", 4);
+		EncodeAndCheck("I", 4);
+	}
 
-	t9.Encode("F");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  'F');
-	REQUIRE(t9.getMKey() ==  3);
-}
+	SECTION("Encode letters on key 5", "[Single Digit] [Key 5 Letters]")
+	{
+		EncodeAndCheck("J", 5);
+		EncodeAndCheck("K", 5);
+		EncodeAndCheck("L", 5);
+	}
 
-TEST_CASE("Encode key 4 letters (G,H,I) --> return 4", "[Single Digit] [Key 4 Letters]")
-{
-	T9 t9;
+	SECTION("Encode letters on key 6", "[Single Digit] [Key 6 Letters]")
+	{
+		EncodeAndCheck("M", 6);
+		EncodeAndCheck("N", 6);
+		EncodeAndCheck("O", 6);
+	}
 
-	t9.Encode("G");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  'G');
-	REQUIRE(t9.getMKey() ==  4);
+	SECTION("Encode letters on key 7", "[Single Digit] [Key 7 Letters]")
+	{
+		EncodeAndCheck("P", 7);
+		EncodeAndCheck("Q", 7);
+		EncodeAndCheck("R", 7);
+		EncodeAndCheck("S", 7);
+	}
 
-	t9.Encode("H");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  'H');
-	REQUIRE(t9.getMKey() ==  4);
+	SECTION("Encode letters on key 8", "[Single Digit] [Key 8 Letters]")
+	{
+		EncodeAndCheck("T", 8);
+		EncodeAndCheck("U", 8);
+		EncodeAndCheck("V", 8);
+	}
 
-	t9.Encode("I");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  'I');
-	REQUIRE(t9.getMKey() ==  4);
-}
+	SECTION("Encode letters on key 9", "[Single Digit] [Key 9 Letters]")
+	{
+		EncodeAndCheck("W", 9);
+		EncodeAndCheck("X", 9);
+		EncodeAndCheck("Y", 9);
+		EncodeAndCheck("Z", 9);
+	}
 
-TEST_CASE("Encode key 5 letters (J,K,L) --> return 5", "[Single Digit] [Key 5 Letters]")
-{
-	T9 t9;
+	SECTION("Encode letters on key 0", "[Single Digit] [Key 0 Letters]")
+	{
+		EncodeAndCheck(" ", 0);
+	}
 
-	t9.Encode("J");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  'J');
-	REQUIRE(t9.getMKey() ==  5);
-
-	t9.Encode("K");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  'K');
-	REQUIRE(t9.getMKey() ==  5);
-
-	t9.Encode("L");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  'L');
-	REQUIRE(t9.getMKey() ==  5);
-}
-
-TEST_CASE("Encode key 6 letters (M,N,O) --> return 6", "[Single Digit] [Key 6 Letters]")
-{
-	T9 t9;
-
-	t9.Encode("M");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  'M');
-	REQUIRE(t9.getMKey() ==  6);
-
-	t9.Encode("N");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  'N');
-	REQUIRE(t9.getMKey() ==  6);
-
-	t9.Encode("O");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  'O');
-	REQUIRE(t9.getMKey() ==  6);
-}
-
-TEST_CASE("Encode key 7 letters (P,Q,R,S) --> return 7", "[Single Digit] [Key 7 Letters]")
-{
-	T9 t9;
-
-	t9.Encode("P");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  'P');
-	REQUIRE(t9.getMKey() ==  7);
-
-	t9.Encode("Q");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  'Q');
-	REQUIRE(t9.getMKey() ==  7);
-
-	t9.Encode("R");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  'R');
-	REQUIRE(t9.getMKey() ==  7);
-
-	t9.Encode("S");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  'S');
-	REQUIRE(t9.getMKey() ==  7);
-}
-
-TEST_CASE("Encode key 8 letters (T,U,V) --> return 8", "[Single Digit] [Key 8 Letters]")
-{
-	T9 t9;
-
-	t9.Encode("T");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  'T');
-	REQUIRE(t9.getMKey() ==  8);
-
-	t9.Encode("U");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  'U');
-	REQUIRE(t9.getMKey() ==  8);
-
-	t9.Encode("V");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  'V');
-	REQUIRE(t9.getMKey() ==  8);
-}
-
-TEST_CASE("Encode key 9 letters (W,X,Y,Z) --> return 9", "[Single Digit] [Key 9 Letters]")
-{
-	T9 t9;
-
-	t9.Encode("W");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  'W');
-	REQUIRE(t9.getMKey() ==  9);
-
-	t9.Encode("X");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  'X');
-	REQUIRE(t9.getMKey() ==  9);
-
-	t9.Encode("Y");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  'Y');
-	REQUIRE(t9.getMKey() ==  9);
-
-	t9.Encode("Z");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  'Z');
-	REQUIRE(t9.getMKey() ==  0);
-}
-
-TEST_CASE("Encode key 1 letters (.,,,) --> return 1", "[Single Digit] [Key 1 Letters]")
-{
-	T9 t9;
-
-	t9.Encode(".");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  '.');
-	REQUIRE(t9.getMKey() ==  1);
-
-	t9.Encode(",");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  ',');
-	REQUIRE(t9.getMKey() ==  1);
-}
-
-TEST_CASE("Encode key 0 letters ( ) --> return 0", "[Single Digit] [Key 0 Letters]")
-{
-	T9 t9;
-
-	t9.Encode(" ");
-	CAPTURE(t9);
-	CHECK(t9.getMChar() ==  ' ');
-	REQUIRE(t9.getMKey() ==  0);
+	SECTION("Encode letters on key 1", "[Single Digit] [Key 1 Letters]")
+	{
+		EncodeAndCheck(".", 1);
+		EncodeAndCheck(",", 1);
+	}
 }
 
 TEST_CASE("Encode incorrect letter --> return -1", "[Single Digit] [Incorrect Letter]")
